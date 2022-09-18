@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+###   ------------------------- `Amazon-clone ` ---------------------------
+ 1. we are creating amazone clone app and will be learing lot of things 
+ 2. I will be using firebase for managing database also i will be deploying this website.
+        -> install firbase in react app == npm install firebase  
+        -> To host our website-site with Firebase Hosting, you need the Firebase CLI (a command line tool) so to install it == npm install -g firebase-tools
+        -> there are more todo with firebase which we will be doing in future
+        -> next we need to add firebase snnipt - next we will create a new file for this firebase snippt
+        
