@@ -1,0 +1,53 @@
+.navbar{
+    height: 60px;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    position: sticky; /* this line means that the navbar will stay at
+                        one position and all the other things will role under it.   */
+    top: 0;
+    z-index: 0 20%;
+}
+.navbar__logo{
+    width: 100px;
+    object-fit: contain;
+    margin: 0 20px;
+    margin-top: 18px;
+
+}
+.navbar__search{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 24px;
+}
+.navbar__search-in{
+    height: 12px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+.navbar__search-icon{
+    padding: 5px;
+    height: 22px !important ;
+    background-color: #cd9042;
+}
+.navbar__nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+.navbar__nav-opts{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: aliceblue;
+}
+.navbar__nav-opt1{
+    font-size: 11px;
+    font-weight: 400;
+}
+.navbar__nav-opt2{
+    font-size: 13px;
+    font-weight: 700;
+}

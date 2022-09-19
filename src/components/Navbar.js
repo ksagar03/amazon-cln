@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/Navbar.css'
+import SearchIcon from '@mui/icons-material/Search';
 
 const Navbar = () => {
     return (
@@ -13,6 +14,7 @@ const Navbar = () => {
                 <input type="text" className='navbar__search-in'
                 />
                 {/* search logo */}
+                <SearchIcon className='navbar__search-icon'/>
             </div>
 
             <div className='navbar__nav'>
