@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css/Navbar.css'
 import SearchIcon from '@mui/icons-material/Search';
-
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 const Navbar = () => {
     return (
         <div className='navbar'>
@@ -30,6 +30,14 @@ const Navbar = () => {
                     <span className='navbar__nav-opt1'>Your</span>
                     <span className='navbar__nav-opt2'>Prime</span>
                 </div>
+            </div>
+
+            <div className="navbar_cartoption">
+                <ShoppingCartCheckoutIcon/>
+                <span className='navbar__nav-opt2 items_added_to_cart' >0</span>
+                {/* for above option we are defing two class name one is for styling and
+                 another one is for dynamic updation of cart value */}
+
             </div>
 
 

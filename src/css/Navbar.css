@@ -48,6 +48,18 @@
     font-weight: 400;
 }
 .navbar__nav-opt2{
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
 }
+.navbar_cartoption{
+    display: flex;
+    width: 100;
+    align-items: center;
+    color: aliceblue ;
+    margin-left: 5px;
+
+}
+.items_added_to_cart{
+    margin-right: 15px;
+}
+

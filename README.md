@@ -76,3 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         -> To host our website-site with Firebase Hosting, you need the Firebase CLI (a command line tool) so to install it == npm install -g firebase-tools
         -> there are more todo with firebase which we will be doing in future
         -> next we need to add firebase snnipt - next we will create a new file for this firebase snippt
+ 3. next I created a navbar components which will handle the functionallity of the navbar and also for the styling navbar a css file has been created which will define the design of the navbar.
+ 
+ 
