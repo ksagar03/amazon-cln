@@ -6,7 +6,7 @@
     position: sticky; /* this line means that the navbar will stay at
                         one position and all the other things will role under it.   */
     top: 0;
-    z-index: 0 20%;
+    z-index:0 20%;
 }
 .navbar__logo{
     width: 100px;

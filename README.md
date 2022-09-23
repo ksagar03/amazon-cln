@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+ # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -77,5 +77,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         -> there are more todo with firebase which we will be doing in future
         -> next we need to add firebase snnipt - next we will create a new file for this firebase snippt
  3. next I created a navbar components which will handle the functionallity of the navbar and also for the styling navbar a css file has been created which will define the design of the navbar.
+ 4. Next task is to add home page
+ 5. this home page will have different blocks which will show different products and its details.
+       -> Here we will have differnt rows
+     
  
  
