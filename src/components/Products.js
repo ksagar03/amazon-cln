@@ -1,17 +1,23 @@
 import React from "react"
 import "../css/Products.css"
-const Products = () => {
+const Products = ({title,price,image,ratings}) => {
   return (
     <div className='product'>
       <div className="product__info">
-        <p>Pendrive</p>
-        <p className="product__price"> <small>₹</small> <strong>2000</strong></p>
+        <p>{title}</p>
+        <p className="product__price"> <small>₹</small> <strong>{price}</strong></p>
         <div className="product__ratings">
-          <p>⭐⭐⭐⭐</p>
+          {
+            Array(ratings).fill().map((_,i)=>(
+              <p>⭐</p> 
+              // this array will print the stars based on the given ratings
+            ))
+          }
+          {/* <p>⭐⭐⭐⭐</p> */}
         </div>
         
       </div>
-      <img src="https://m.media-amazon.com/images/I/81gqM6ouEcL._SX679_.jpg" alt="" />
+      <img src={image} alt="" />
       <button className="product__cart">add to cart</button>
     </div>
   )

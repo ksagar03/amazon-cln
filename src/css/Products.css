@@ -13,15 +13,22 @@
 
 }
 
+.product__price{
+    margin-top: 2px;
+}
 .product__info{
     height: 100px;
     margin-bottom: 15px;
 }
 .product > img{
     max-height: 200px;
-    width: 100;
+    width: 100%;
     object-fit: contain;
     margin-bottom: 15px;
+}
+
+.product__ratings{
+    display: flex;
 }
 
 .product > button{
