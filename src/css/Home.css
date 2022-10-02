@@ -1,25 +1,24 @@
-.home{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1500px;
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
 }
 
-.home__blocks_in_rows{
-    display: flex;
-    z-index: 1;
-    margin-left: 5px;
-    margin-right: 5px;
+.home__blocks_in_rows {
+  display: flex;
+  z-index: 1;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.home__image{
-    width: 100%;
-    z-index: -1;
-    margin-bottom: -150px;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1),rgba(0,0,0,0)) ;
-    /* this mask-image will bring the fader color at the bottom
+.home__image {
+  width: 100%;
+  z-index: -1;
+  margin-bottom: -150px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  /* this mask-image will bring the fader color at the bottom
     (for more information please check the originalimage and the image in the website) */
 }
-
