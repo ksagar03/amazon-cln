@@ -7,20 +7,18 @@ const Cart = () => {
     <div className="cart">
       <div className="cart_leftside">
         <img
-          className="cart_ads"
+          className="cart__ads"
           src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/Samsung/Jup_22/Brandstore_Creatives/Phase2/_D58372311_WLD_Jupiter_2022_Phase2_Samsung_Family_1500x300_pc_store_header.jpg"
+          // src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
           alt=""
         />
 
         <div className="cart__title">
-            <h2>
-                Your Cart
-            </h2>
+          <h4>Your Cart</h4>
         </div>
-        <div className="cart__right"> 
-            <Subtotal />
-            <h4>Subtotal will be added here</h4>
-        </div>
+      </div>
+      <div className="cart__rightside">
+        <Subtotal />
       </div>
     </div>
   );

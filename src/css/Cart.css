@@ -1,13 +1,13 @@
 .cart {
-  display: flexbox;
+  display: flex;
   padding: 20px;
   background-color: white;
   height: max-content;
 }
 
-.cart_ads {
-  width: 57%;
-  height: 80px;
+.cart__ads {
+  width: 95%;
+  height: 50%;
   margin-bottom: 10px;
   border-radius: 2px;
 }
