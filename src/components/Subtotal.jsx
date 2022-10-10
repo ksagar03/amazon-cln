@@ -19,7 +19,7 @@ const Subtotal = () => {
             </p>
             <small className="subtotal__gift">
               <input type="checkbox" />
-              Add gift vouchers
+               Add gift vouchers
             </small>
           </>
         )}
