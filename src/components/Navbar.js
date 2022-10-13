@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import { useStateValue } from "./StateProvider";
 const Navbar = () => {
+  const [{ Basket }] = useStateValue();
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -37,7 +40,11 @@ const Navbar = () => {
       <Link to="/cart">
         <div className="navbar_cartoption">
           <ShoppingCartCheckoutIcon />
-          <span className="navbar__nav-opt2 items_added_to_cart">0</span>
+          <span className="navbar__nav-opt2 items_added_to_cart">
+            {Basket?.length}
+          </span>
+          {/* here in this Basket?.length "?" is used as ternary operator which terminate the above 
+          line if basket provides a invalid length   */}
           {/* for above option we are defing two class name one is for styling and
                  another one is for dynamic updation of cart value */}
         </div>
