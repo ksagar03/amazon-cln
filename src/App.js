@@ -13,7 +13,6 @@ function App() {
           path="/Cart"
           element={
             <h1>
-              
               <Cart />
             </h1>
           }

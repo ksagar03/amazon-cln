@@ -2,6 +2,7 @@ import React from "react";
 import "../css/Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "./StateProvider";
+import { to_get_final_subtotal } from "./Reducer";
 //  this currencyformat is a component which is used to handle the fallowing feature
 // 1.Prefix, suffix and thousand separator.
 // 2. Custom format pattern.
@@ -10,7 +11,7 @@ import { useStateValue } from "./StateProvider";
 // 5. Formatting a input or a simple text.
 
 const Subtotal = () => {
-  const [{ Basket }] = useStateValue();
+  const [{ Basket },dispatch] = useStateValue();
   // next task is to calculate subtotal
   return (
     <div className="subtotal">
@@ -18,7 +19,7 @@ const Subtotal = () => {
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({Basket?.length} items): <strong>0</strong>
+              Subtotal ({Basket?.length} items): <strong>{value}</strong>
             </p>
             <small className="subtotal__gift">
               <input type="checkbox" />
@@ -27,7 +28,7 @@ const Subtotal = () => {
           </>
         )}
         decimalScale={2}
-        value={0}
+        value={to_get_final_subtotal(Basket)}
         displayType={"text"}
         thousandSeparator={true}
         prefix={"₹"}

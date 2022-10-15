@@ -3,7 +3,7 @@ import { useStateValue } from "./StateProvider";
 const Products = ({ id, title, price, image, ratings }) => {
   const [{Basket}, dispatch] = useStateValue();
 
-  console.log("add to cart list ----->",Basket)
+  // console.log("add to cart list ----->",Basket)
   const add_to_cart = () => {
     // this function will tell us what to do when we click on add to cart button \
     // it dispatches data into datalayer
