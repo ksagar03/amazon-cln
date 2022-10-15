@@ -1,8 +1,11 @@
 import React from "react";
 import "../css/Cart.css";
+import CartProduct from "./CartProduct";
+import { useStateValue } from "./StateProvider";
 import Subtotal from "./Subtotal";
 
 const Cart = () => {
+  const [{Basket}]=useStateValue()
   return (
     <div className="cart">
       <div className="cart_leftside">
@@ -15,6 +18,17 @@ const Cart = () => {
 
         <div className="cart__title">
           <h4>Your Cart</h4>
+          {Basket.map((item)=>(
+            <CartProduct 
+              id={item.id}
+              price={item.price}
+              title={item.title}
+              image={item.image}
+              ratings={item.ratings}
+
+            />
+          ))
+          }
         </div>
       </div>
       <div className="cart__rightside">

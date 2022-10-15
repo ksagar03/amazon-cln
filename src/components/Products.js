@@ -1,7 +1,7 @@
 import "../css/Products.css";
 import { useStateValue } from "./StateProvider";
 const Products = ({ id, title, price, image, ratings }) => {
-  const [{Basket}, dispatch] = useStateValue();
+  const [{ Basket }, dispatch] = useStateValue();
 
   // console.log("add to cart list ----->",Basket)
   const add_to_cart = () => {
@@ -23,7 +23,6 @@ const Products = ({ id, title, price, image, ratings }) => {
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">
-          {" "}
           <small>₹</small> <strong>{price}</strong>
         </p>
         <div className="product__ratings">
