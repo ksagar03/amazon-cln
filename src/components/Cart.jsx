@@ -5,7 +5,7 @@ import { useStateValue } from "./StateProvider";
 import Subtotal from "./Subtotal";
 
 const Cart = () => {
-  const [{Basket}]=useStateValue()
+  const [{ Basket }] = useStateValue();
   return (
     <div className="cart">
       <div className="cart_leftside">
@@ -18,18 +18,16 @@ const Cart = () => {
 
         <div className="cart__title">
           <h4>Your Cart</h4>
-          {Basket.map((item)=>(
-            <CartProduct 
-              id={item.id}
-              price={item.price}
-              title={item.title}
-              image={item.image}
-              ratings={item.ratings}
-
-            />
-          ))
-          }
         </div>
+        {Basket.map((item) => (
+          <CartProduct
+            id={item.id}
+            price={item.price}
+            title={item.title}
+            image={item.image}
+            ratings={item.ratings}
+          />
+        ))}
       </div>
       <div className="cart__rightside">
         <Subtotal />

@@ -1,0 +1,34 @@
+.cartproduct{
+    display: flex; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.cartproduct__info{
+    padding-left: 20px;
+}
+
+.cartproduct__info > button{
+    background: #f0c14b;
+    border: 1px solid;
+    margin-top:10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: black;
+}
+.cartproduct__img{
+    display: flex;
+    object-fit: contain;
+    width: 100px;
+    height:100px
+}
+.cartproduct__ratings{
+    font-size: large;
+    display: flex
+}
+
+.cartproduct__title{
+    font-size: large;
+    font-weight: 800px;
+}
+.cartproduct__price{
+    font-size: large;
+}

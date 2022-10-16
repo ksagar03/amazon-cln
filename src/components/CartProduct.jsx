@@ -1,7 +1,16 @@
 import React from "react";
 import "../css/CartProduct.css";
+import { useStateValue } from "./StateProvider";
 
 const CartProduct = ({ id, image, price, title, ratings }) => {
+  const [{Basket},dispatch]=useStateValue()
+  function RemoveFromCart(){
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      id:id,
+      // when we click on the button(remove from cart) it will return us the id of that product
+    })
+  }
   return (
     <div className="cartproduct">
       <img className="cartproduct__img" src={image} />
@@ -15,7 +24,7 @@ const CartProduct = ({ id, image, price, title, ratings }) => {
               <p>⭐</p>
             ))}
         </div>
-        <button className="cartproduct__btn">Remove form cart</button>
+        <button onClick={RemoveFromCart} className="cartproduct__btn">Remove form cart</button>
       </div>
     </div>
   );

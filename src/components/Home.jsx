@@ -24,7 +24,7 @@ const Home = () => {
         <Products
           id={2}
           title="Apple iPhone 13 Pro (128 GB) - Alpine Green"
-          price={104900}
+          price={104900.99}
           image=" https://m.media-amazon.com/images/I/61AwGDDZd3L._SX679_.jpg"
           ratings={5}
         />
@@ -41,7 +41,7 @@ const Home = () => {
         <Products
           id={4}
           title="2020 Apple MacBook Pro (13.3-inch/33.78 cm, Apple M1 chip with 8‑core CPU and 8‑core GPU, 8GB RAM, 512GB SSD) - Space Grey "
-          price={132990}
+          price={132990.50}
           image="https://m.media-amazon.com/images/I/71an9eiBxpL._SX679_.jpg"
           ratings={5}
         />
