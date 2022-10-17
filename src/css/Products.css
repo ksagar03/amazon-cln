@@ -20,6 +20,7 @@
   margin-bottom: 15px;
 }
 .product > img {
+  /* display: flex; */
   max-height: 200px;
   width: 100%;
   object-fit: contain;

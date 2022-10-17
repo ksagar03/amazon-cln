@@ -24,10 +24,12 @@ const Navbar = () => {
       </div>
 
       <div className="navbar__nav">
+        <Link to="/login">
         <div className="navbar__nav-opts">
           <span className="navbar__nav-opt1">Hello</span>
           <span className="navbar__nav-opt2">Sign In</span>
         </div>
+        </Link>
         <div className="navbar__nav-opts">
           <span className="navbar__nav-opt1">Returns</span>
           <span className="navbar__nav-opt2"> & Orders </span>

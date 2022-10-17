@@ -1,0 +1,55 @@
+.login {
+  background-color: white;
+  height: 100vh;
+  /* here vh means view heigh  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__logo {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: contain;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.login__container {
+  font-weight: lighter;
+  font-size: medium;
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.login__container > h1 {
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.login__container > form > h5 {
+  padding-bottom: 2px;
+}
+
+.login__container > form > input {
+  height: 25px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 95%;
+}
+
+.login__container > p {
+  margin-top: 10px;
+  font-size: small;
+}
+
+.login__container > h6 {
+  /* border-bottom: 1px solid lightgray; */
+  font-weight: lighter;
+  text-align: center;
+  padding: 5px;
+}
