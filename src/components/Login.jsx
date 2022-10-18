@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import "../css/Login.css";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const signIN = (event) => {
     event.preventDefault();
+   
   };
   const registerAccount = (event) => {
-    event.preventDefault(); // this line will prevent from reloading the page whenever we click on the btn 
+    event.preventDefault(); // this line will prevent from reloading the page whenever we click on the btn
+    auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((auth) => console.log(auth))
+    .catch((error) => alert(error.message));
   };
   return (
     <div className="login">
@@ -44,7 +51,7 @@ const Login = () => {
           Privacy Notice.
         </p>
         <h6>New to amazon?</h6>
-        <button onclick={registerAccount} className="login__newRegistrationBtn">
+        <button onClick={registerAccount} className="login__newRegistrationBtn">
           Create your Amazon Account
         </button>
       </div>
