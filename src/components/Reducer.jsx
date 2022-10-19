@@ -41,6 +41,14 @@ const reducer = (state, action) => {
         ...state,
         Basket: newBasket,
       };
+      case "USER_STATE":
+        {
+          return{
+            ...state,
+            user: action.user
+          }
+
+        }
 
     // return{
     //   ...state,

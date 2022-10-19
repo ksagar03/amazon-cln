@@ -11,7 +11,7 @@ import { to_get_final_subtotal } from "./Reducer";
 // 5. Formatting a input or a simple text.
 
 const Subtotal = () => {
-  const [{ Basket },dispatch] = useStateValue();
+  const [{ Basket }] = useStateValue();
   // next task is to calculate subtotal
   return (
     <div className="subtotal">

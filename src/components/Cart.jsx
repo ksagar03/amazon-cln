@@ -5,7 +5,16 @@ import { useStateValue } from "./StateProvider";
 import Subtotal from "./Subtotal";
 
 const Cart = () => {
-  const [{ Basket }] = useStateValue();
+  const [{ Basket, user }] = useStateValue();
+  if(user)
+  {
+  var name=user?.email
+  name= name.split("@")
+  name=name[0]
+  }
+  else{
+    name="guest"
+  }
   return (
     <div className="cart">
       <div className="cart_leftside">
@@ -17,6 +26,7 @@ const Cart = () => {
         />
 
         <div className="cart__title">
+          <h5>Hello, {name}</h5>
           <h4>Your Cart</h4>
         </div>
         {Basket.map((item) => (

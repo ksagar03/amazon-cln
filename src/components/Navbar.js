@@ -4,9 +4,22 @@ import "../css/Navbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { useStateValue } from "./StateProvider";
+import { auth } from "../firebase";
 const Navbar = () => {
-  const [{ Basket }] = useStateValue();
-
+  const [{ Basket, user }] = useStateValue();
+  const handleUserLogin = () => {
+    auth.signOut();
+  };
+  if(user)
+  {
+    var name=user?.email
+    name= name.split("@")                         // this if condition is used to get name of the user from email
+    name=name[0]                                  //
+    }
+    else{
+      name="guest"
+    }
+  
   return (
     <div className="navbar">
       <Link to="/">
@@ -24,11 +37,13 @@ const Navbar = () => {
       </div>
 
       <div className="navbar__nav">
-        <Link to="/login">
-        <div className="navbar__nav-opts">
-          <span className="navbar__nav-opt1">Hello</span>
-          <span className="navbar__nav-opt2">Sign In</span>
-        </div>
+        <Link to={!user && "/login"}>
+          <div onClick={handleUserLogin} className="navbar__nav-opts">
+            <span className="navbar__nav-opt1">Hello, {name}</span>
+            <span className="navbar__nav-opt2">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
+          </div>
         </Link>
         <div className="navbar__nav-opts">
           <span className="navbar__nav-opt1">Returns</span>

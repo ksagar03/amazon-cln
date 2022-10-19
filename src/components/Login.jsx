@@ -1,21 +1,35 @@
 import React, { useState } from "react";
 import "../css/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 const Login = () => {
+  const navigate = useNavigate();
+  // In v6(react router dom) usehistory has been changed  to "usenavigate"
+  // this function is used to navigate to other page specified inside Route
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const signIN = (event) => {
     event.preventDefault();
-   
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        navigate("/");
+      })
+      .catch((error) => alert(error.message));
   };
+  
   const registerAccount = (event) => {
     event.preventDefault(); // this line will prevent from reloading the page whenever we click on the btn
     auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((auth) => console.log(auth))
-    .catch((error) => alert(error.message));
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        if (auth) {
+          navigate("/");
+          // if the sign was succesfull then this above function will revert back home page
+        }
+      })
+      .catch((error) => alert(error.message));
   };
   return (
     <div className="login">
