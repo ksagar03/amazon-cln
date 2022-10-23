@@ -13,8 +13,12 @@ const Navbar = () => {
   if(user)
   {
     var name=user?.email
+    // here we have used '?'(called optional chaining) because when we are fetching data from firebase 
+    // sometimes it takes time to fetch the data so if there is a delay and this above line executes, 
+    // we will get error so to overcome this we are using '?'   
+
     name= name.split("@")                         // this if condition is used to get name of the user from email
-    name=name[0]                                  //
+    name=name[0]                                 
     }
     else{
       name="guest"

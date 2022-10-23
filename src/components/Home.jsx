@@ -16,10 +16,10 @@ const Home = () => {
       <div className="home__blocks_in_rows">
         <Products
           id={1}
-          title="Pendrive"
+          title="SanDisk Ultra Dual Drive Go 256GB USB Type C Pendrive for Mobile (5Y - SDDDC3-256G-I35, Black)"
           price={2000}
           image="https://m.media-amazon.com/images/I/81gqM6ouEcL._SX679_.jpg"
-          ratings={4}
+          ratings={3}
         />
         <Products
           id={2}
