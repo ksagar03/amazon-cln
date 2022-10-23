@@ -7,8 +7,9 @@ import Login from "./components/Login";
 import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./components/StateProvider";
+import Payment from "./components/Payment";
 function App() {
-  const [{},dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
   useEffect(() => {
     // useEffect is a hook which is rendered whenever there are some changes made in the website
     // also it will run only once
@@ -20,11 +21,13 @@ function App() {
         dispatch({
           type: "USER_STATE",
           user: authUser,
+          user_name: authUser?.email.split('@')[0],
         });
       } else {
         dispatch({
           type: "USER_STATE",
           user: null,
+          user_name: "Guest"
         });
       }
     });
@@ -36,19 +39,26 @@ function App() {
         <Route
           path="/login"
           element={
-            <h1>
+            <div>
               <Login />
-            </h1>
+            </div>
           }
         />
         <Route
           path="/Cart"
           element={
-            <h2>
+            <div>
               <Navbar />
               <Cart />
-            </h2>
+            </div>
           }
+        />
+        <Route
+          path="/payment"
+          element={<div>
+            <Navbar />
+            <Payment /> 
+           </div>}
         />
 
         <Route

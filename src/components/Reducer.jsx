@@ -45,7 +45,8 @@ const reducer = (state, action) => {
         {
           return{
             ...state,
-            user: action.user
+            user: action.user,
+            user_name: action.user_name
           }
 
         }
