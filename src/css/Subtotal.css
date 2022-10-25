@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 400px ;
+  width: 350px ;
   height: 127px ;
   padding: 20px  ;
   background-color: #f3f3f3;
   border: 1px solid #dddddd;
   border-radius: 3px;
-  font-weight: normal;
-  font-size: 80%;
+  /* font-weight: normal; */
+  font-size: 120%; 
 }
 
 .subtotal__gift{
