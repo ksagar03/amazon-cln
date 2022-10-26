@@ -3,9 +3,27 @@ import "../css/Payment.css";
 import CartProduct from "./CartProduct";
 import { useStateValue } from "./StateProvider";
 import { Link } from "react-router-dom";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useState } from "react";
+import CurrencyFormat from "react-currency-format";
+import { to_get_final_subtotal } from "./Reducer";
 
 const Payment = () => {
   const [{ Basket, user_name }, dispatch] = useStateValue();
+
+  const stripe = useStripe();
+  const elements = useElements();
+  const [error, setError] = useState();
+  const [disabled, setDisabled] = useState();
+  const [succeeded, setSucceeded]=useState(false);
+  const [processing, setProcessing]=useState("")
+
+  const tohandlesubmit = (e) => {};
+  // this below function is used to return any error while entering the card details
+  const tohandlechange = (e) => {
+    setDisabled(e.empty);
+    setError(e.error ? e.error.message : "");
+  };
 
   return (
     <div className="payment">
@@ -44,8 +62,26 @@ const Payment = () => {
         </div>
         <div className="payment__section">
           {/* this section is for to display payment method */}
-          <div className="payment__title">
-            <h3>Payment method</h3>
+          <div className="payment__details">
+            <div className="payment__title">
+              <h3>Payment method</h3>
+              <form onSubmit={tohandlesubmit}>
+                <CardElement onChange={tohandlechange} />
+                <div className="payment__price">
+                  <CurrencyFormat
+                    renderText={(value) => <h3>order total: {value}</h3>}
+                    decimalScale={2}
+                    value={to_get_final_subtotal(Basket)}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₹"}
+                  />
+                  <button disabled={ processing || disabled || succeeded }>
+                    <span>{processing?<p>Processing</p>:"Buy Now"}</span>
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

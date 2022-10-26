@@ -8,6 +8,18 @@ import { useEffect } from "react";
 import { auth } from "./firebase";
 import { useStateValue } from "./components/StateProvider";
 import Payment from "./components/Payment";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+
+// Stripe: Stripe is a payment processing platform which provides us API to process the payment
+// (i.e it provides secured way of processing the payment )
+
+const promise = loadStripe(
+  "pk_test_51Lx20gSHgvSf9YWJnU5hpwZ8HmOUodPhMjoimQNjuu1GPQumoAV0ip6OficVVnszkjpFijVv5Kl8Amt0imLnt3pD00MtJASpXe"
+);
+// In side this loadstripe is the public key provided by the stripe
+
 function App() {
   const [{}, dispatch] = useStateValue();
   useEffect(() => {
@@ -21,13 +33,13 @@ function App() {
         dispatch({
           type: "USER_STATE",
           user: authUser,
-          user_name: authUser?.email.split('@')[0],
+          user_name: authUser?.email.split("@")[0],
         });
       } else {
         dispatch({
           type: "USER_STATE",
           user: null,
-          user_name: "Guest"
+          user_name: "Guest",
         });
       }
     });
@@ -55,10 +67,14 @@ function App() {
         />
         <Route
           path="/payment"
-          element={<div>
-            <Navbar />
-            <Payment /> 
-           </div>}
+          element={
+            <div>
+              <Navbar />
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
+            </div>
+          }
         />
 
         <Route

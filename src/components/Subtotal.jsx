@@ -12,9 +12,9 @@ import { useNavigate } from "react-router-dom";
 // 5. Formatting a input or a simple text.
 
 const Subtotal = () => {
-  const [{ Basket,user }] = useStateValue();
+  const [{ Basket, user }] = useStateValue();
   // next task is to calculate subtotal
-  const navigate= useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="subtotal">
       <CurrencyFormat
@@ -35,14 +35,19 @@ const Subtotal = () => {
         thousandSeparator={true}
         prefix={"₹"}
       />
-      <button onClick={e=>{if(user){
-
-      {navigate("/payment")} }
-      else
-      {
-       alert("please login to proceed to checkout")
-      }
-      }}> Proceed to Checkout </button>
+      <button
+        onClick={(e) => {
+          if (user) {
+            navigate("/payment");
+          } else {
+            alert("please login to proceed to checkout");
+            onsubmit=navigate('/login')
+          }
+        }}
+      >
+        {" "}
+        Proceed to Checkout{" "}
+      </button>
     </div>
   );
 };
