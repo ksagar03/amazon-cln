@@ -2,12 +2,12 @@ import React from "react";
 import "../css/Payment.css";
 import CartProduct from "./CartProduct";
 import { useStateValue } from "./StateProvider";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import { to_get_final_subtotal } from "./Reducer";
-import axios from "axios";
+import axios from "../axios";
 
 const Payment = () => {
   const [{ Basket, user_name }, dispatch] = useStateValue();
@@ -18,23 +18,46 @@ const Payment = () => {
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret]=useState();
+  const [clientSecret, setClientSecret] = useState();
 
-  useEffect((e)=>{
-    const toGetClientSecretKey= async () =>{
-      const response= await axios({
-        method: "Post",
-        url: `/payments/create?total=${to_get_final_subtotal(Basket)*100}`
-      })
-      // axios->  axios is a fetching librery which is used for Get,post request 
-    }
+  useEffect(
+    (e) => {
+      const toGetClientSecretKey = async () => {
+        const response = await axios({
+          method: "post",
+          url: `/payments/create?total=${to_get_final_subtotal(Basket) * 100}`,
+          // In above code we have given a url which will featch a secret key from clint side
+          //  this secret chnages when ever we add or remove item from the basket
+          // here we have multiplied a function with 100 and this is beacuse stripe only accepts currency
+          // in sub currency format(i.e 1rupee in 100paise )
+        });
+        setClientSecret(response.data.clientSecret);
+        // axios->  axios is a fetching librery which is used for Get,post request
+      };
 
-  },[Basket])
+      toGetClientSecretKey();
+    },
+    [Basket]
+  );
 
-  const tohandlesubmit = (e) => {
-    e.preventDefault() // this will prevent refreshing the page whenever this function is called 
-    setProcessing(true) // once after entering the card details we click on Buy now btn, after clicking
-    //  it the btn will disabled so that user can't click on Buy now btn more than one time 
+  const tohandlesubmit = async (e) => {
+    e.preventDefault(); // this will prevent refreshing the page whenever this function is called
+    setProcessing(true); // once after entering the card details we click on Buy now btn, after clicking
+    //  it the btn will disabled so that user can't click on Buy now btn more than one time
+    const payload= await stripe.confirmCardPayment(clientSecret,{
+      payment_method: {
+        card:elements.getElement(CardElement)
+      }
+    }).then(({paymentIntent}) => {
+      // this function is for confromation of the payment 
+
+      setSucceeded(true)
+      setProcessing(false)
+      setError(null)
+
+      Navigate.goBack('/orders') // still have confussion in it 
+
+    })
   };
   // this below function is used to return any error while entering the card details
   const tohandlechange = (e) => {
