@@ -40,6 +40,7 @@ const Payment = () => {
     [Basket]
   );
 
+  console.log("the client secret key is", clientSecret)
   const tohandlesubmit = async (e) => {
     e.preventDefault(); // this will prevent refreshing the page whenever this function is called
     setProcessing(true); // once after entering the card details we click on Buy now btn, after clicking
@@ -55,7 +56,7 @@ const Payment = () => {
       setProcessing(false)
       setError(null)
 
-      Navigate.goBack('/orders') // still have confussion in it 
+      // Navigate('/orders') // still have confussion in it 
 
     })
   };
