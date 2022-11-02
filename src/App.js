@@ -10,7 +10,7 @@ import { useStateValue } from "./components/StateProvider";
 import Payment from "./components/Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-
+import Orders from "./components/Orders";
 
 // Stripe: Stripe is a payment processing platform which provides us API to process the payment
 // (i.e it provides secured way of processing the payment )
@@ -73,6 +73,15 @@ function App() {
               <Elements stripe={promise}>
                 <Payment />
               </Elements>
+            </div>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <div>
+              <Navbar />
+              <Orders />
             </div>
           }
         />

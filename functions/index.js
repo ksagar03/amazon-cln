@@ -28,7 +28,7 @@ app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
   // here /payment/create is a path defined inside payment.js
   // (/payments/create?total=${to_get_final_subtotal(Basket) * 100}`)  here ?total is called query prams which allows
-  // user to define query or logical operation within the url 
+  // user to define query or logical operation within the url
   // and this post method will send a post request to the
   // defined path and  returns with a secret key required for the payment processing
   // this secret key will change when ever there is a change in subtotal(i.e total).

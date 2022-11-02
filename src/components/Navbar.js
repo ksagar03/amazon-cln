@@ -7,32 +7,32 @@ import { useStateValue } from "./StateProvider";
 import { auth } from "../firebase";
 const Navbar = () => {
   const [{ Basket, user, user_name }] = useStateValue();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleUserLogin = () => {
     auth.signOut();
-    navigate(!user && "/login")
+    navigate(!user && "/login");
   };
-// ----------------------------------------Important------------------------------------------------------------
-        // this below code is been replaced by "user_name"
-        // now user name is added to the DATA LAYER
-        // this user_name stores the name of the user(i.e it will take user email and it will take starting name 
-        // till @)
-        // if there is no user then user_name will store 'Guest'
-// if(user)
+  // ----------------------------------------Important------------------------------------------------------------
+  // this below code is been replaced by "user_name"
+  // now user name is added to the DATA LAYER
+  // this user_name stores the name of the user(i.e it will take user email and it will take starting name
+  // till @)
+  // if there is no user then user_name will store 'Guest'
+  // if(user)
   // {
   //   var name=user?.email
-  //   // here we have used '?'(called optional chaining) because when we are fetching data from firebase 
-  //   // sometimes it takes time to fetch the data so if there is a delay and this above line executes, 
-  //   // we will get error so to overcome this we are using '?'   
+  //   // here we have used '?'(called optional chaining) because when we are fetching data from firebase
+  //   // sometimes it takes time to fetch the data so if there is a delay and this above line executes,
+  //   // we will get error so to overcome this we are using '?'
 
   //   name= name.split("@")                         // this if condition is used to get name of the user from email
-  //   name=name[0]                                 
+  //   name=name[0]
   //   }
   //   else{
   //     name="guest"
   //   }
   // ---------------------------------------------Important-----------------------------------------------------------
-  
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -51,16 +51,22 @@ const Navbar = () => {
 
       <div className="navbar__nav">
         {/* <Link to={!user && "/login"}> */}
-          <div onClick={handleUserLogin } className="navbar__nav-opts">
-            <span className="navbar__nav-opt1">Hello, {user_name}</span>
-            <span className="navbar__nav-opt2">
-              {user ? "Sign Out" : "Sign In"}
-            </span>
-          </div>
+        <div onClick={handleUserLogin} className="navbar__nav-opts">
+          <span className="navbar__nav-opt1">Hello, {user_name}</span>
+          <span className="navbar__nav-opt2">
+            {user ? "Sign Out" : "Sign In"}
+          </span>
+        </div>
         {/* </Link> */}
-        <div className="navbar__nav-opts">
-          <span className="navbar__nav-opt1">Returns</span>
-          <span className="navbar__nav-opt2"> & Orders </span>
+        <div
+          onClick={(e) => {
+            navigate("/order");
+          }}
+        >
+          <div className="navbar__nav-opts">
+            <span className="navbar__nav-opt1">Returns</span>
+            <span className="navbar__nav-opt2"> & Orders </span>
+          </div>
         </div>
         <div className="navbar__nav-opts">
           <span className="navbar__nav-opt1">Your</span>
@@ -68,16 +74,21 @@ const Navbar = () => {
         </div>
       </div>
       {/* <Link to="/cart"> */}
-        <div  className="navbar_cartoption" onClick={e=>{navigate("/cart")}}>
-          <ShoppingCartCheckoutIcon />
-          <span className="navbar__nav-opt2 items_added_to_cart">
-            {Basket?.length}
-          </span>
-          {/* here in this Basket?.length "?" is used as ternary operator which terminate the above 
+      <div
+        className="navbar_cartoption"
+        onClick={(e) => {
+          navigate("/cart");
+        }}
+      >
+        <ShoppingCartCheckoutIcon />
+        <span className="navbar__nav-opt2 items_added_to_cart">
+          {Basket?.length}
+        </span>
+        {/* here in this Basket?.length "?" is used as ternary operator which terminate the above 
           line if basket provides a invalid length   */}
-          {/* for above option we are defing two class name one is for styling and
+        {/* for above option we are defing two class name one is for styling and
                  another one is for dynamic updation of cart value */}
-        </div>
+      </div>
       {/* </Link> */}
     </div>
   );

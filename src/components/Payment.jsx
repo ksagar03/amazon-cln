@@ -2,7 +2,7 @@ import React from "react";
 import "../css/Payment.css";
 import CartProduct from "./CartProduct";
 import { useStateValue } from "./StateProvider";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
@@ -10,6 +10,7 @@ import { to_get_final_subtotal } from "./Reducer";
 import axios from "../axios";
 
 const Payment = () => {
+  const navigate =useNavigate()
   const [{ Basket, user_name }, dispatch] = useStateValue();
 
   const stripe = useStripe();
@@ -56,7 +57,13 @@ const Payment = () => {
       setProcessing(false)
       setError(null)
 
-      // Navigate('/orders') // still have confussion in it 
+
+      dispatch({
+        type: "EMPTY_BASKET"
+
+      })
+
+      navigate('/order') // still have confussion in it 
 
     })
   };
