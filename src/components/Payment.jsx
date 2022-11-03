@@ -8,9 +8,10 @@ import { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import { to_get_final_subtotal } from "./Reducer";
 import axios from "../axios";
+import { db } from "../firebase";
 
 const Payment = () => {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [{ Basket, user_name }, dispatch] = useStateValue();
 
   const stripe = useStripe();
@@ -41,31 +42,40 @@ const Payment = () => {
     [Basket]
   );
 
-  console.log("the client secret key is", clientSecret)
+  console.log("the client secret key is", clientSecret);
   const tohandlesubmit = async (e) => {
     e.preventDefault(); // this will prevent refreshing the page whenever this function is called
     setProcessing(true); // once after entering the card details we click on Buy now btn, after clicking
     //  it the btn will disabled so that user can't click on Buy now btn more than one time
-    const payload= await stripe.confirmCardPayment(clientSecret,{
-      payment_method: {
-        card:elements.getElement(CardElement)
-      }
-    }).then(({paymentIntent}) => {
-      // this function is for confromation of the payment 
-
-      setSucceeded(true)
-      setProcessing(false)
-      setError(null)
-
-
-      dispatch({
-        type: "EMPTY_BASKET"
-
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
       })
+      .then(({ paymentIntent }) => {
+        // this function is for confromation of the payment
 
-      navigate('/order') // still have confussion in it 
+        db.collection("users")
+          .doc(user_name?.id)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            Basket: Basket,                      // need to learn about nosql
+            amount: paymentIntent.amount,
+            created: paymentIntent.created, // this provides the time-stamps 
+          });
 
-    })
+        setSucceeded(true);
+        setProcessing(false);
+        setError(null);
+
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
+
+        navigate("/order"); // still have confussion in it
+      });
   };
   // this below function is used to return any error while entering the card details
   const tohandlechange = (e) => {
