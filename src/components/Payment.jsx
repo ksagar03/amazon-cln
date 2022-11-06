@@ -12,7 +12,7 @@ import { db } from "../firebase";
 
 const Payment = () => {
   const navigate = useNavigate();
-  const [{ Basket, user_name }, dispatch] = useStateValue();
+  const [{ Basket, user_name, user }, dispatch] = useStateValue();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -57,13 +57,13 @@ const Payment = () => {
         // this function is for confromation of the payment
 
         db.collection("users")
-          .doc(user_name?.id)
+          .doc(user?.uid)
           .collection("orders")
           .doc(paymentIntent.id)
           .set({
-            Basket: Basket,                      // need to learn about nosql
+            Basket: Basket, // need to learn about nosql
             amount: paymentIntent.amount,
-            created: paymentIntent.created, // this provides the time-stamps 
+            created: paymentIntent.created, // this provides the time-stamps
           });
 
         setSucceeded(true);

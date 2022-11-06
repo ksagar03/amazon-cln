@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../css/Orders.css";
+import Order from "./Order";
 import { db } from "../firebase";
 import { useStateValue } from "./StateProvider";
 const Orders = () => {
-  const [{ Basket, user_name }] = useStateValue();
+  const [{ Basket, user_name, user }] = useStateValue();
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    if (user_name) {
+    if (user) {
       db.collection("users")
-        .doc(user_name?.id)
+        .doc(user?.uid)
         .collection("orders")
         .orderBy("created", "desc")
         .onSnapshot((snapshot) =>
@@ -22,8 +23,18 @@ const Orders = () => {
     } else {
       setOrders([]);
     }
-  }, [user_name]);
-  return <div className="orders"></div>;
+  }, [user]);
+  console.log("your orders ==>", orders);
+  return (
+    <div className="orders">
+      <h1>Your Orders</h1>
+      <div className="orders__order">
+        {orders?.map((order) => (
+          <Order order={order} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Orders;
