@@ -120,9 +120,11 @@ const Payment = () => {
         </div>
         <div className="payment__section">
           {/* this section is for to display payment method */}
-          <div className="payment__details">
+          
             <div className="payment__title">
               <h3>Payment method</h3>
+            </div>
+            <div className="payment__details">
               <form onSubmit={tohandlesubmit}>
                 <CardElement onChange={tohandlechange} />
                 <div className="payment__price">
@@ -141,7 +143,6 @@ const Payment = () => {
                 {/* error message */}
                 {error && <div>{error}</div>}
               </form>
-            </div>
           </div>
         </div>
       </div>

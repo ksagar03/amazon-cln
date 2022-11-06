@@ -3,7 +3,7 @@ import "../css/CartProduct.css";
 import { useStateValue } from "./StateProvider";
 // import FlipMove from "react-flip-move";
 
-const CartProduct = ({ id, image, price, title, ratings }) => {
+const CartProduct = ({ id, image, price, title, ratings, hideButton }) => {
   const [{ Basket }, dispatch] = useStateValue();
   function RemoveFromCart() {
     dispatch({
@@ -29,9 +29,9 @@ const CartProduct = ({ id, image, price, title, ratings }) => {
                 <p>⭐</p>
               ))}
           </div>
-          <button onClick={RemoveFromCart} className="cartproduct__btn">
+          {!hideButton &&  <button onClick={RemoveFromCart} className="cartproduct__btn">
             Remove form cart
-          </button>
+          </button>}
         </div>
       </div>
     // </FlipMove>
