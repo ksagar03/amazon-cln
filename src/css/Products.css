@@ -11,6 +11,10 @@
   background-color: white;
   z-index: 1;
 }
+.product:hover {
+  transform: scale(1.04);
+  
+}
 
 .product__price {
   margin-top: 2px;

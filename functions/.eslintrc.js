@@ -1,7 +1,7 @@
 module.exports = {
-  parserOptions: {
-    ecmaVersion: 8,
-  },
+  // parserOptions: {
+  //   ecmaVersion: 8,
+  // },
   root: true,
   env: {
     es6: true,
@@ -9,17 +9,17 @@ module.exports = {
   },
   extends: ["eslint:recommended", "google"],
   rules: {
-    "max-len": [
-      "error",
-      {
-        "code": 60,
-        "tabWidth": 2,
-        "ignoreComments": true,
-        "ignoreUrls": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-      },
-    ],
-    "quotes": ["error", "double"],
+    // "max-len": [
+    //   "error",
+    //   {
+    //     "code": 60,
+    //     "tabWidth": 2,
+    //     "ignoreComments": true,
+    //     "ignoreUrls": true,
+    //     "ignoreStrings": true,
+    //     "ignoreTemplateLiterals": true,
+    //   },
+    // ],
+    quotes: ["error", "double"],
   },
 };

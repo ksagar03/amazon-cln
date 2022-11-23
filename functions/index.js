@@ -2,8 +2,10 @@ const functions = require("firebase-functions");
 
 const express = require("express");
 const cors = require("cors");
-const {response} = require("express");
-const stripe = require("stripe")("sk_test_51Lx20gSHgvSf9YWJE38GQ3cVmP0AGMzoN5DDV9HKWkmXTdNUZg3sYGc2awYKggWJ70cjpKYmXMJjjvBXn9r4nj1Z009XYH8Yiw");
+const { response } = require("express");
+const stripe = require("stripe")(
+  "sk_test_51Lx20gSHgvSf9YWJE38GQ3cVmP0AGMzoN5DDV9HKWkmXTdNUZg3sYGc2awYKggWJ70cjpKYmXMJjjvBXn9r4nj1Z009XYH8Yiw"
+);
 
 // to setup an API we need to have fallowing code
 /* 1. API config
@@ -15,7 +17,7 @@ const stripe = require("stripe")("sk_test_51Lx20gSHgvSf9YWJE38GQ3cVmP0AGMzoN5DDV
 const app = express();
 //  2. API middleware
 
-app.use(cors({origin: true}));
+app.use(cors({ origin: true }));
 // this is like a security which will allow the some perticular
 // hosts to access this code
 app.use(express.json());

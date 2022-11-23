@@ -7,7 +7,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import { to_get_final_subtotal } from "./Reducer";
-import axios from "../axios";
+import instance from "../axios";
 import { db } from "../firebase";
 
 const Payment = () => {
@@ -20,27 +20,24 @@ const Payment = () => {
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState();
+  const [clientSecret, setClientSecret] = useState("");
 
-  useEffect(
-    (e) => {
-      const toGetClientSecretKey = async () => {
-        const response = await axios({
-          method: "post",
-          url: `/payments/create?total=${to_get_final_subtotal(Basket) * 100}`,
-          // In above code we have given a url which will featch a secret key from clint side
-          //  this secret chnages when ever we add or remove item from the basket
-          // here we have multiplied a function with 100 and this is beacuse stripe only accepts currency
-          // in sub currency format(i.e 1rupee in 100paise )
-        });
-        setClientSecret(response.data.clientSecret);
-        // axios->  axios is a fetching librery which is used for Get,post request
-      };
+  useEffect(() => {
+    const toGetClientSecretKey = async () => {
+      const response = await instance({
+        method: "post",
+        url: `/payments/create?total=${to_get_final_subtotal(Basket) * 100}`,
+        // In above code we have given a url which will featch a secret key from clint side
+        //  this secret chnages when ever we add or remove item from the basket
+        // here we have multiplied a function with 100 and this is beacuse stripe only accepts currency
+        // in sub currency format(i.e 1rupee in 100paise )
+      });
+      setClientSecret(response.data.clientSecret);
+      // axios->  axios is a fetching librery which is used for Get,post request
+    };
 
-      toGetClientSecretKey();
-    },
-    [Basket]
-  );
+    toGetClientSecretKey();
+  }, [Basket]);
 
   console.log("the client secret key is", clientSecret);
   const tohandlesubmit = async (e) => {
@@ -120,29 +117,29 @@ const Payment = () => {
         </div>
         <div className="payment__section">
           {/* this section is for to display payment method */}
-          
-            <div className="payment__title">
-              <h3>Payment method</h3>
-            </div>
-            <div className="payment__details">
-              <form onSubmit={tohandlesubmit}>
-                <CardElement onChange={tohandlechange} />
-                <div className="payment__price">
-                  <CurrencyFormat
-                    renderText={(value) => <h3>order total: {value}</h3>}
-                    decimalScale={2}
-                    value={to_get_final_subtotal(Basket)}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"₹"}
-                  />
-                  <button disabled={processing || disabled || succeeded}>
-                    <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-                  </button>
-                </div>
-                {/* error message */}
-                {error && <div>{error}</div>}
-              </form>
+
+          <div className="payment__title">
+            <h3>Payment method</h3>
+          </div>
+          <div className="payment__details">
+            <form onSubmit={tohandlesubmit}>
+              <CardElement onChange={tohandlechange} />
+              <div className="payment__price">
+                <CurrencyFormat
+                  renderText={(value) => <h3>order total: {value}</h3>}
+                  decimalScale={2}
+                  value={to_get_final_subtotal(Basket)}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"₹"}
+                />
+                <button disabled={processing || disabled || succeeded}>
+                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                </button>
+              </div>
+              {/* error message */}
+              {error && <div>{error}</div>}
+            </form>
           </div>
         </div>
       </div>
