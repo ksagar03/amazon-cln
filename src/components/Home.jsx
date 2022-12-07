@@ -15,11 +15,11 @@ const Home = () => {
       </div>
       <div className="home__blocks_in_rows">
         <Products
-          id={1}
-          title="SanDisk Ultra Dual Drive Go 256GB USB Type C Pendrive for Mobile (5Y - SDDDC3-256G-I35, Black)"
-          price={2000}
-          image="https://m.media-amazon.com/images/I/81gqM6ouEcL._SX679_.jpg"
-          ratings={3}
+          id={4}
+          title="2020 Apple MacBook Pro (13.3-inch/33.78 cm, Apple M1 chip with 8‑core CPU and 8‑core GPU, 8GB RAM, 512GB SSD) - Space Grey "
+          price={132990.5}
+          image="https://m.media-amazon.com/images/I/71an9eiBxpL._SX679_.jpg"
+          ratings={5}
         />
         <Products
           id={2}
@@ -39,11 +39,11 @@ const Home = () => {
           ratings={4}
         />
         <Products
-          id={4}
-          title="2020 Apple MacBook Pro (13.3-inch/33.78 cm, Apple M1 chip with 8‑core CPU and 8‑core GPU, 8GB RAM, 512GB SSD) - Space Grey "
-          price={132990.5}
-          image="https://m.media-amazon.com/images/I/71an9eiBxpL._SX679_.jpg"
-          ratings={5}
+          id={1}
+          title="SanDisk Ultra Dual Drive Go 256GB USB Type C Pendrive for Mobile (5Y - SDDDC3-256G-I35, Black)"
+          price={2000}
+          image="https://m.media-amazon.com/images/I/81gqM6ouEcL._SX679_.jpg"
+          ratings={3}
         />
         <Products
           id={5}

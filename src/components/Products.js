@@ -2,7 +2,7 @@ import "../css/Products.css";
 import { useStateValue } from "./StateProvider";
 const Products = ({ id, title, price, image, ratings }) => {
   const [{ Basket }, dispatch] = useStateValue();
-
+// here dispatch will be linking to reducer function in Reducer.js
   // console.log("add to cart list ----->",Basket)
   const add_to_cart = () => {
     // this function will tell us what to do when we click on add to cart button \
